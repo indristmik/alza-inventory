@@ -41,12 +41,14 @@
                 <li class="nav-item"><a href="/returns" class="nav-link">Retur Pakaian</a></li>
             <?php endif; ?>
 
-            <!-- MENU MANAJERIAL (OWNER) -->
+            <!-- MENU LAPORAN BERSAMA (Admin & Owner) -->
+            <div class="sidebar-heading">Laporan & Rekap</div>
+            <li class="nav-item"><a href="/reports/sewing-cost" class="nav-link">Rekap Ongkos Jahit</a></li>
+
+            <!-- MENU MANAJERIAL (KHUSUS OWNER) -->
             <?php if (session()->get('role') === 'owner'): ?>
-                <div class="sidebar-heading">Manajemen & Laporan</div>
                 <li class="nav-item"><a href="/inventory" class="nav-link">Monitoring Stok Fisik</a></li>
                 <li class="nav-item"><a href="/reports/sales" class="nav-link">Laporan Penjualan Channel</a></li>
-                <li class="nav-item"><a href="/reports/tailor-costs" class="nav-link">Rekap Ongkos Jahit Maklun</a></li>
                 <li class="nav-item"><a href="/reports/returns" class="nav-link">Analisis Retur Cacat</a></li>
                 <li class="nav-item"><a href="/users" class="nav-link">Kelola Akun Pengguna</a></li>
             <?php endif; ?>

@@ -18,6 +18,11 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     // Halaman Dashboard Bersama
     $routes->get('dashboard', 'Dashboard::index');
 
+    // ==================================================
+    // MODUL LAPORAN BERSAMA (Bisa dilihat Admin & Owner)
+    // ==================================================
+    $routes->get('reports/sewing-cost', 'Reports::sewingCost');
+
     // --------------------------------------------------
     // RUTE KHUSUS OPERASIONAL (ROLE: ADMIN)
     // --------------------------------------------------
@@ -28,30 +33,31 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('tailors/store', 'Tailors::store');
         $routes->get('tailors/delete/(:num)', 'Tailors::delete/$1');
 
-        // (Nanti Master Kategori, Produk, dan Transaksi Mutasi ditaruh di sini)
-
+        // Master Kategori
         $routes->get('categories', 'Categories::index');
         $routes->post('categories/store', 'Categories::store');
         $routes->get('categories/delete/(:num)', 'Categories::delete/$1');
 
-
+        // Master Produk & Varian
         $routes->get('products', 'Products::index');
         $routes->get('products/new', 'Products::new');
         $routes->post('products/store', 'Products::store');
         $routes->get('products/show/(:num)', 'Products::show/$1');
         $routes->get('products/delete/(:num)', 'Products::delete/$1');
 
+        // Transaksi Barang Masuk (Setoran Penjahit)
         $routes->get('stock-in', 'StockIn::index');
         $routes->get('stock-in/new', 'StockIn::new');
         $routes->post('stock-in/store', 'StockIn::store');
         $routes->get('stock-in/show/(:num)', 'StockIn::show/$1');
 
-
+        // Transaksi Barang Keluar (Penjualan Multi-channel)
         $routes->get('stock-out', 'StockOut::index');
         $routes->get('stock-out/new', 'StockOut::new');
         $routes->post('stock-out/store', 'StockOut::store');
         $routes->get('stock-out/show/(:num)', 'StockOut::show/$1');
 
+        // Transaksi Retur Pakaian
         $routes->get('returns', 'ItemReturns::index');
         $routes->get('returns/new', 'ItemReturns::new');
         $routes->post('returns/store', 'ItemReturns::store');
@@ -64,6 +70,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     // --------------------------------------------------
     $routes->group('', ['filter' => 'role:owner'], function ($routes) {
         
-        // (Nanti Laporan Keuangan, Omset, dan Manajemen User ditaruh di sini)
+        // Nanti laporan omset finansial atau modul user ditaruh di sini
+        
     });
 });
